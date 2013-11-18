@@ -3,7 +3,7 @@
 Provides a caching layer for any Zend Framework 2 web app using MongoDB.
 
 ### Installation
-===============
+----------------
 Add MongoCacher to your `composer.json`:
 
 ~~~json
@@ -21,10 +21,8 @@ Add MongoCacher to your `composer.json`:
 ~~~
 
 ### Usage
-===============
-
-
-Start importing MongoCacher:
+---------
+Start by importing MongoCacher:
 
 ~~~
 use MongoCacher;
@@ -57,7 +55,7 @@ public function getServiceConfig()
 }
 ~~~
 
-You're almost done; just make sure to make MongoCacher available through your ServiceManager by adding the following factory to the same function `getServiceConfig()` and within the same file `Module.php`:
+You're almost done; just make sure to make MongoCacher available through your ServiceManager by adding the following factory to the same function `getServiceConfig()` within the same file `Module.php`:
 
 ~~~php
 'MongoCacher' => function (ServiceManager $serviceManager) {
@@ -68,6 +66,4 @@ You're almost done; just make sure to make MongoCacher available through your Se
 },
 ~~~
 
-================
-
-#And That's All!
+## And That's All!
