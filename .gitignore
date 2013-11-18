@@ -5,3 +5,4 @@ extras/documentation
 .AppleDouble
 .DS_Store
 .idea
+composer.lock
