@@ -4,6 +4,8 @@ Provides a caching layer for any Zend Framework 2 web app using MongoDB.
 
 ### Installation
 ----------------
+**NOTE:** _You don't have to add or modify anything with MongoDB, `MongoCacher` will take care of everything as long as a valid connection was provided._
+
 Add `MongoCacher` to your `composer.json`:
 
 ~~~json
