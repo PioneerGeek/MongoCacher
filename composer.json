@@ -1,0 +1,27 @@
+{
+    "name": "Punchkick-Interactive/MongoCacher",
+    "description": "Provides a caching layer for any Zend Framework 2 web app using MongoDB.",
+    "type": "library",
+    "keywords": [
+        "mongo",
+        "cacher",
+        "cache",
+        "mongocacher"
+    ],
+
+    "homepage": "https://github.com/Punchkick-Interactive/MongoCacher",
+    "autoload": {
+        "psr-0": {
+            "MongoCacher": "src/"
+        },
+        "classmap": [
+            "./"
+        ]
+    },
+
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.1.*",
+        "phly/phly-mongo": "dev-master"
+    }
+}
