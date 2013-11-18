@@ -11,7 +11,7 @@ Add MongoCacher to your `composer.json`:
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/Punchkick-Interactive/pki-saas-view-strategy.git"
+            "url": "https://github.com/Punchkick-Interactive/MongoCacher.git"
         }
     ],
     "require": {
