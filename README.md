@@ -11,14 +11,16 @@ Provides a caching layer for any Zend Framework 2 web app using MongoDB.
 Add MongoCacher to your `composer.json`:
 
 ~~~json
-"repositories": [
-    {
-        "type": "vcs",
-        "url": "https://github.com/Punchkick-Interactive/pki-saas-view-strategy.git"
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Punchkick-Interactive/pki-saas-view-strategy.git"
+        }
+    ],
+    "require": {
+        "punchkick-interactive/MongoCacher": "dev-master"
     }
-],
-"require": {
-	"punchkick-interactive/MongoCacher": "dev-master"
 }
 ~~~
 
