@@ -4,7 +4,7 @@ Provides a caching layer for any Zend Framework 2 web app using MongoDB.
 
 ### Installation
 ----------------
-Add MongoCacher to your `composer.json`:
+Add `MongoCacher` to your `composer.json`:
 
 ~~~json
 {
@@ -22,7 +22,7 @@ Add MongoCacher to your `composer.json`:
 
 ### Usage
 ---------
-Start by importing MongoCacher:
+Start by importing `MongoCacher`:
 
 ~~~
 use MongoCacher;
@@ -40,6 +40,7 @@ public function getServiceConfig()
                     $sm->get(
                         'MongoCacher'
                     ),
+                    // Your preferred DB connection (usually defined within your global.php or local.php)
                     'Application\Mongo\Connection'
                 );
 
@@ -55,7 +56,7 @@ public function getServiceConfig()
 }
 ~~~
 
-You're almost done; just make sure to make MongoCacher available through your ServiceManager by adding the following factory to the same function `getServiceConfig()` within the same file `Module.php`:
+You're almost done; just make sure to make `MongoCacher` available through your `ServiceManager` by adding the following factory to the same function `getServiceConfig()` within the same file `Module.php`:
 
 ~~~php
 'MongoCacher' => function (ServiceManager $serviceManager) {
@@ -64,6 +65,22 @@ You're almost done; just make sure to make MongoCacher available through your Se
 
     return $mongoCacher;
 },
+~~~
+
+You're set now! In your controller, fetch a new instance of `MongoCacher` using the `ServiceManager` and start using it:
+
+~~~php
+$mongoCacher = $this->getServiceLocator()->get('MongoCacher');
+
+$key = "myFistMongoCacherKey"; // String
+$value = "myFirstMongoCacherData"; // Could be any data type (object, string, integer, etc.)
+$ttl = 1800; // In seconds
+
+// Caches a new entry
+$this->mongoCacher->set($key, $value, $ttl);
+
+// Retrieves an entry
+$cachedData = $this->mongoCacher->get($key);
 ~~~
 
 ## And That's All!
