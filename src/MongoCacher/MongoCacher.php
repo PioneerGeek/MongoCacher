@@ -57,12 +57,29 @@ class MongoCacher
             )
         );
 
-        // Makes sure that a key was fetched and has the propert 'value'
-        if ($currentObject != null && property_exists($currentObject, "value")) {
-            return unserialize(base64_decode($currentObject->value));
-        } else {
+        // If missing status key then something iw wrong, return null
+        if (isset($currentObject->status->sec) === false) {
             return null;
         }
+        $currentMongoDate = new MongoDate();
+        // Safe fail, if mongo did not delete entry return null so data can be reset
+        if ($currentMongoDate->sec > $currentObject->status->sec) {
+            return null;
+        }
+
+        // Makes sure that a key was fetched and has the property 'value'
+        if ($currentObject != null && property_exists($currentObject, "value")) {
+            $value = unserialize(base64_decode($currentObject->value));
+            if (empty($value) === false) {
+                // If data is instance of JsonModel then inject dataTime property
+                if ($value instanceof \Zend\View\Model\JsonModel) {
+                    $value->dataTime = $currentMongoDate->sec;
+                }
+                return $value;
+            }
+        }
+        return null;
+
     }
 
     /**
